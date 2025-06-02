@@ -11,4 +11,8 @@ import { SecondComponent } from './second/second.component';
 })
 export class AppComponent {
   title = 'm2i-juin-25';
+
+  lireLettreV2(lettre: string) {
+    alert(lettre);
+  }
 }

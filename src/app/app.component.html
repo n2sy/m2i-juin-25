@@ -1,4 +1,8 @@
 <strong>Formation Angular</strong>
 <hr />
 <app-first></app-first>
-<app-second></app-second>
+<h3>Appel depuis le AppComponent</h3>
+<app-second
+  (enveloppe)="lireLettreV2($event)"
+  [secondColor]="'blue'"
+></app-second>

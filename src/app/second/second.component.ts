@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-second',
@@ -6,4 +6,12 @@ import { Component } from '@angular/core';
   imports: [],
   templateUrl: './second.component.html',
 })
-export class SecondComponent {}
+export class SecondComponent {
+  @Input({ required: true }) secondColor: string = 'red';
+
+  @Output() enveloppe = new EventEmitter();
+
+  deposerEnveloppe() {
+    this.enveloppe.emit('Lettre de la part du SecondComponent');
+  }
+}

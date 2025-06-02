@@ -12,7 +12,7 @@ export class FirstComponent {
   societe: string = 'Inetum';
   annee: number = 2025;
 
-  myColor: string = 'yellow';
+  myColor: string = 'pink';
   hd: boolean = false;
 
   clickHandler() {
@@ -21,5 +21,9 @@ export class FirstComponent {
 
   changerNomSociete(inp: any) {
     this.societe = inp.value;
+  }
+
+  lireLettre(lettre: string) {
+    console.log(lettre);
   }
 }

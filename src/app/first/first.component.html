@@ -11,4 +11,8 @@
 
 <hr />
 <hr />
-<app-second></app-second>
+
+<app-second
+  (enveloppe)="lireLettre($event)"
+  [secondColor]="myColor"
+></app-second>
