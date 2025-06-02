@@ -1,1 +1,22 @@
-<p>add-account works!</p>
+Account Name :
+<input #inpName class="form-control" />
+
+Account Status :
+<select #inpStatus class="form-control">
+  @for (status of allStatus; track $index) {
+  <option [value]="status">{{ status }}</option>
+  }
+</select>
+
+<button
+  (click)="addAccountHandler(inpName.value, inpStatus.value)"
+  class="btn btn-outline-primary"
+>
+  Add Account
+</button>
+<!-- <br />
+NameValue : {{ nameValue }}
+<br />
+
+StatusValue : {{ statusValue }}
+<br /> -->

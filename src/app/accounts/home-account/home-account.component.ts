@@ -20,4 +20,8 @@ export class HomeAccountComponent {
       statut: 'inactive',
     },
   ];
+
+  addAccount(newAccount) {
+    this.tabAccounts.push(newAccount);
+  }
 }

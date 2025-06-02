@@ -1,1 +1,28 @@
-<p>item-account works!</p>
+<div class="contour">
+  <h4>{{ oneAccount.nom }}</h4>
+  <hr />
+  <p>This account is {{ oneAccount.statut }}</p>
+
+  <button
+    (click)="updateStatus('active')"
+    [disabled]="oneAccount.statut == 'active'"
+    class="btn btn-success"
+  >
+    Set to 'active'
+  </button>
+
+  <button
+    (click)="updateStatus('unknown')"
+    [disabled]="oneAccount.statut == 'unknown'"
+    class="btn btn-danger"
+  >
+    Set to 'unknown'
+  </button>
+  <button
+    (click)="updateStatus('inactive')"
+    [disabled]="oneAccount.statut == 'inactive'"
+    class="btn btn-info"
+  >
+    Set to 'inactive'
+  </button>
+</div>
