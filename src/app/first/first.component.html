@@ -1,0 +1,14 @@
+<h1>Formation avec {{ societe }} {{ annee }} </h1>
+
+<div [hidden]="hd" [style.backgroundColor]="myColor">Property Binding</div>
+
+<button (click)="clickHandler()">Click me (Event Binding)</button>
+<br />
+<input [(ngModel)]="societe" type="text" />
+<br />
+<br />
+<input #inp [value]="societe" (input)="changerNomSociete(inp)" type="text" />
+
+<hr />
+<hr />
+<app-second></app-second>
