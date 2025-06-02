@@ -10,4 +10,15 @@ import { Candidat } from '../models/candidat';
   templateUrl: './cv.component.html',
   styleUrl: './cv.component.css',
 })
-export class CvComponent {}
+export class CvComponent {
+  tabCandidats: Candidat[] = [
+    new Candidat('1', 'bart', 'simpson', 23, 'ingénieur', 'bart.jpeg'),
+    new Candidat('2', 'homer', 'simpson', 54, 'chef de projet', 'homer.png'),
+    new Candidat('3', 'lisa', 'simpson', 32, 'designer UI', 'lisa.png'),
+  ];
+  selectedCandidat: Candidat;
+
+  recupererCandidatClique(cand) {
+    this.selectedCandidat = cand;
+  }
+}

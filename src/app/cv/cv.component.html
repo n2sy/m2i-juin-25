@@ -1,8 +1,11 @@
 <div class="row">
   <div class="col-5">
-    <app-liste></app-liste>
+    <app-liste
+      (eventToCv)="recupererCandidatClique($event)"
+      [tabCands]="tabCandidats"
+    ></app-liste>
   </div>
   <div class="col-7">
-    <app-details></app-details>
+    <app-details [selCand]="selectedCandidat"></app-details>
   </div>
 </div>
