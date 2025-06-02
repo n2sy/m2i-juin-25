@@ -2,7 +2,9 @@
 
 <div [hidden]="hd" [style.backgroundColor]="myColor">Property Binding</div>
 
-<button (click)="clickHandler()">Click me (Event Binding)</button>
+<button class="btn btn-primary" (click)="clickHandler()">
+  Click me (Event Binding)
+</button>
 <br />
 <input [(ngModel)]="societe" type="text" />
 <br />
