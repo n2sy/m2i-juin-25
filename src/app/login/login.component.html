@@ -1,11 +1,83 @@
 <form #f="ngForm">
   <label for="">Login</label>
-  <input ngModel name="email" type="text" class="form-control" />
+  <input
+    #inpEmail="ngModel"
+    ngModel
+    required
+    email
+    name="email"
+    type="text"
+    class="form-control"
+  />
+
+  @if (inpEmail.invalid && inpEmail.dirty) {
+
+  <div class="alert alert-danger">Veuillez saisir une adresse mail valide</div>
+  }
 
   <label for="">Mot de passe</label>
-  <input ngModel name="password" type="text" class="form-control" />
-  <br />
+  <input
+    ngModel
+    required
+    minlength="5"
+    name="password"
+    type="text"
+    class="form-control"
+  />
+
+  <div #infosGroupe="ngModelGroup" ngModelGroup="infos">
+    <label for="">Langage préféré</label>
+    <select name="langage" [ngModel]="defaultLanguage" class="form-control">
+      <option value=""></option>
+      <option value="python">Python</option>
+      <option value="java">Java</option>
+      <option value="php">Php</option>
+    </select>
+
+    <hr />
+    {{ defaultLanguage }}
+    <br />
+    <label for="">Commentaire</label>
+    <textarea
+      class="form-control"
+      [(ngModel)]="monCommentiare"
+      name="commentaire"
+      rows="4"
+      cols="5"
+    ></textarea>
+    <hr />
+
+    {{ monCommentiare }}
+
+    <hr />
+  </div>
+
+  <label for="">Gestion des erreurs</label>
+  <input
+    #inpErr="ngModel"
+    ngModel
+    name="erreurs"
+    required
+    minlength="5"
+    pattern="nidhal"
+    type="text"
+    class="form-control"
+  />
+
+  @if(inpErr.invalid) { @if (inpErr.errors["required"]) {
+  <div class="alert alert-info">Ce champ est obligatoire</div>
+
+  } @if (inpErr.errors["minlength"]) {
+  <div class="alert alert-dark">Le nombre minmal de caractères est 5</div>
+  } @if (inpErr.errors["pattern"]) {
+  <div class="alert alert-info">Le pattern est 'nidhal'</div>
+  } }
+
   <button (click)="submitHandler(f)" class="btn btn-primary">Submit</button>
+  <button (click)="resetHandler(f)" class="btn btn-danger">Reset</button>
+  <button (click)="genererInfos(f)" class="btn btn-dark">
+    Generer Email & Pwd
+  </button>
   <pre>
     {{ f.value | json }}
   </pre>
