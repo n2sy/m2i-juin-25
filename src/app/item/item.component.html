@@ -1,3 +1,4 @@
 <li (click)="sendCandToListe()" class="list-group-item">
-  <img [src]="unCandidat.avatar" /> {{ unCandidat.prenom }} {{ unCandidat.nom }}
+  <img [src]="unCandidat.avatar | defaultAvatar" /> {{ unCandidat.prenom }}
+  {{ unCandidat.nom }}
 </li>
