@@ -6,6 +6,7 @@ import { CvComponent } from './cv/cv.component';
 import { HomeAccountComponent } from './accounts/home-account/home-account.component';
 import { DirectComponent } from './direct/direct.component';
 import { ManageServersComponent } from './manage-servers/manage-servers.component';
+import { FirstService } from './services/first.service';
 
 @Component({
   selector: 'app-root',
@@ -20,6 +21,7 @@ import { ManageServersComponent } from './manage-servers/manage-servers.componen
     ManageServersComponent,
   ],
   templateUrl: './app.component.html',
+  providers: [FirstService],
 })
 export class AppComponent {
   title = 'm2i-juin-25';

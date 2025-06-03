@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ListeComponent } from '../liste/liste.component';
 import { DetailsComponent } from '../details/details.component';
 import { Candidat } from '../models/candidat';
+import { FirstService } from '../services/first.service';
+import { GestionCandidatsService } from '../services/gestion-candidats.service';
 
 @Component({
   selector: 'app-cv',
@@ -11,15 +13,30 @@ import { Candidat } from '../models/candidat';
   styleUrl: './cv.component.css',
 })
 export class CvComponent {
-  tabCandidats: Candidat[] = [
-    new Candidat('1', 'bart', 'simpson', 23, 'ingénieur', 'bart.jpeg'),
-    new Candidat('2', 'homer', 'simpson', 54, 'chef de projet', 'homer.png'),
-    new Candidat('3', 'lisa', 'simpson', 32, 'designer UI', 'lisa.png'),
-    new Candidat('4', 'nidhal', 'jelassi', 40, 'formateur'),
-  ];
+  tabCandidats: Candidat[] = [];
   selectedCandidat: Candidat;
+
+  // Maniere 1 d'injecter un service
+  //constructor(private firstSer: FirstService) {}
+
+  // Manière 2 d'injecter un service
+  private firstSer = inject(FirstService);
+  private candSer = inject(GestionCandidatsService);
+
+  ngOnInit() {
+    this.firstSer.sePresenter();
+    this.tabCandidats = this.candSer.getAllCandidats();
+  }
+
+  addCandidat() {
+    this.candSer.ajouterCandidat();
+  }
 
   recupererCandidatClique(cand) {
     this.selectedCandidat = cand;
+  }
+
+  affichageListCandidats() {
+    console.log(this.candSer.getAllCandidats());
   }
 }
