@@ -22,5 +22,9 @@ export class GestionCandidatsService {
     );
   }
 
+  chercherCandidatParId(selectedId) {
+    return this.listeCandidats.find((cand) => cand._id == selectedId);
+  }
+
   constructor() {}
 }
