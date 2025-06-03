@@ -1,1 +1,55 @@
-<p>editer works!</p>
+<form #f="ngForm">
+  <label for="">Prénom</label>
+  <input
+    [ngModel]="candidatAMettreAJour.prenom"
+    required
+    name="prenom"
+    type="text"
+    class="form-control"
+  />
+
+  <label for="">Nom</label>
+  <input
+    [ngModel]="candidatAMettreAJour.nom"
+    required
+    name="nom"
+    type="text"
+    class="form-control"
+  />
+
+  <label for="">Age</label>
+  <input
+    [ngModel]="candidatAMettreAJour.age"
+    name="age"
+    type="number"
+    class="form-control"
+  />
+
+  <label for="">Profession</label>
+  <input
+    [ngModel]="candidatAMettreAJour.profession"
+    name="profession"
+    type="text"
+    class="form-control"
+  />
+
+  <label for="">avatar</label>
+  <input
+    [ngModel]="candidatAMettreAJour.avatar"
+    name="avatar"
+    type="text"
+    class="form-control"
+  />
+
+  <pre>
+    {{ f.value | json }}
+  </pre>
+  <br />
+  <button
+    (click)="ModifierHandler(f.value)"
+    [disabled]="f.invalid"
+    class="btn btn-outline-primary"
+  >
+    Modifier Candidat
+  </button>
+</form>

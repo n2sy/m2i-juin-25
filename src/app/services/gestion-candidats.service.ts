@@ -16,10 +16,20 @@ export class GestionCandidatsService {
     return this.listeCandidats;
   }
 
-  ajouterCandidat() {
-    this.listeCandidats.push(
-      new Candidat('5', 'NEW', 'CANDIDAT', 40, 'formateur')
-    );
+  addCandidat(newCandidat) {
+    newCandidat._id =
+      this.listeCandidats[this.listeCandidats.length - 1]._id + 1;
+    this.listeCandidats.push(newCandidat);
+  }
+
+  updateCandidat(uCandidat) {
+    let i = this.listeCandidats.findIndex((cand) => cand._id == uCandidat._id);
+    this.listeCandidats[i] = uCandidat;
+  }
+
+  deleteCandidat(id) {
+    let i = this.listeCandidats.findIndex((cand) => cand._id == id);
+    this.listeCandidats.splice(i, 1);
   }
 
   chercherCandidatParId(selectedId) {
@@ -27,4 +37,9 @@ export class GestionCandidatsService {
   }
 
   constructor() {}
+  ajouterCandidat() {
+    this.listeCandidats.push(
+      new Candidat('5', 'NEW', 'CANDIDAT', 40, 'formateur')
+    );
+  }
 }
