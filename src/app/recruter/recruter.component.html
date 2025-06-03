@@ -1,1 +1,17 @@
-<p>recruter works!</p>
+@if (tab.length == 0) {
+<strong>Pas de recrues actuellement...</strong>
+} @else if (tab.length == 1) {
+<strong>Rien qu'un seul... :(</strong>
+<app-item [unCandidat]="tab[0]"></app-item>
+} @else {
+<div>
+  <h5>Liste des recrues</h5>
+  <ol class="list-group">
+    @for (recrue of tab; track $index) {
+    <app-item [unCandidat]="recrue"></app-item>
+
+    }
+  </ol>
+</div>
+
+}

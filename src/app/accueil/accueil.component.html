@@ -1,0 +1,18 @@
+<h3>Bievenue à notre application de gestion de candidats avec INETUM</h3>
+
+<strong>Navigation côté HTML</strong>
+<br />
+<button routerLink="cv" class="btn btn-outline-primary">Go To Cv</button>
+
+<button [routerLink]="['servers']" class="btn btn-outline-warning">
+  Go To Servers
+</button>
+<br />
+<hr />
+<strong>Navigation côté TS</strong>
+<br />
+<button (click)="goToCv()" class="btn btn-outline-danger">Go To Cv</button>
+
+<button (click)="goToServers()" class="btn btn-outline-info">
+  Go To Servers
+</button>

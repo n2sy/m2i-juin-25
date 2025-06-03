@@ -7,6 +7,8 @@ import { HomeAccountComponent } from './accounts/home-account/home-account.compo
 import { DirectComponent } from './direct/direct.component';
 import { ManageServersComponent } from './manage-servers/manage-servers.component';
 import { FirstService } from './services/first.service';
+import { RecruterComponent } from './recruter/recruter.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @Component({
   selector: 'app-root',
@@ -19,6 +21,8 @@ import { FirstService } from './services/first.service';
     HomeAccountComponent,
     DirectComponent,
     ManageServersComponent,
+    RecruterComponent,
+    NavbarComponent,
   ],
   templateUrl: './app.component.html',
   providers: [FirstService],

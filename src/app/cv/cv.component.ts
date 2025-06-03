@@ -4,13 +4,16 @@ import { DetailsComponent } from '../details/details.component';
 import { Candidat } from '../models/candidat';
 import { FirstService } from '../services/first.service';
 import { GestionCandidatsService } from '../services/gestion-candidats.service';
+import { RecruterComponent } from '../recruter/recruter.component';
+import { GestionRecruesService } from '../services/gestion-recrues.service';
 
 @Component({
   selector: 'app-cv',
   standalone: true,
-  imports: [ListeComponent, DetailsComponent],
+  imports: [ListeComponent, DetailsComponent, RecruterComponent],
   templateUrl: './cv.component.html',
   styleUrl: './cv.component.css',
+  providers: [GestionRecruesService],
 })
 export class CvComponent {
   tabCandidats: Candidat[] = [];
