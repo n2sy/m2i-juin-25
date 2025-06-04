@@ -8,6 +8,7 @@ import { InfosComponent } from './infos/infos.component';
 import { EditerComponent } from './editer/editer.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { LoginComponent } from './login/login.component';
+import { ReactFormComponent } from './react-form/react-form.component';
 
 export let myRoutes: Routes = [
   { path: '', component: AccueilComponent },
@@ -33,6 +34,7 @@ export let myRoutes: Routes = [
   //   { path: 'servers', redirectTo: '/accounts', pathMatch: 'prefix' },
   { path: 'accounts', component: HomeAccountComponent },
   { path: 'not-found', component: NotFoundComponent },
+  { path: 'react-form', component: ReactFormComponent },
   { path: 'login', component: LoginComponent },
   { path: '**', redirectTo: '/not-found' }, // Wild Route
 ];
