@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { Candidat } from '../models/candidat';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
@@ -29,7 +29,8 @@ export class GestionCandidatsService {
     this.listeCandidats.push(newCandidat);
   }
   addCandidatAPI(newCandidat) {
-    return this.http.post(`${this.link}/free`, newCandidat);
+    // return this.http.post(`${this.link}/free`, newCandidat);
+    return this.http.post(`${this.link}`, newCandidat);
   }
 
   updateCandidat(uCandidat) {
@@ -37,7 +38,8 @@ export class GestionCandidatsService {
     this.listeCandidats[i] = uCandidat;
   }
   updateCandidatAPI(uCandidat) {
-    return this.http.put(`${this.link}/free/${uCandidat._id}`, uCandidat);
+    // return this.http.put(`${this.link}/free/${uCandidat._id}`, uCandidat);
+    return this.http.put(`${this.link}/${uCandidat._id}`, uCandidat);
   }
 
   deleteCandidat(id) {
@@ -45,7 +47,14 @@ export class GestionCandidatsService {
     this.listeCandidats.splice(i, 1);
   }
   deleteCandidatAPI(id) {
-    return this.http.delete(`${this.link}/free/${id}`);
+    // return this.http.delete(`${this.link}/free/${id}`);
+    let token = localStorage.getItem('access_token');
+    if (token) {
+      let h = new HttpHeaders();
+      h.append('Authorization', `bearer ${token}`);
+      return this.http.delete(`${this.link}/${id}`, { headers: h });
+    }
+    return this.http.delete(`${this.link}/${id}`);
   }
 
   chercherCandidatParId(selectedId) {
