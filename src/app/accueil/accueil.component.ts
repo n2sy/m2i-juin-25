@@ -2,11 +2,12 @@ import { Component, inject } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { ExpObsComponent } from '../exp-obs/exp-obs.component';
 import { HttpClient } from '@angular/common/http';
+import { ExpSignalsComponent } from '../exp-signals/exp-signals.component';
 
 @Component({
   selector: 'app-accueil',
   standalone: true,
-  imports: [RouterLink, ExpObsComponent],
+  imports: [RouterLink, ExpObsComponent, ExpSignalsComponent],
   templateUrl: './accueil.component.html',
   styleUrl: './accueil.component.css',
 })

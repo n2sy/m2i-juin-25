@@ -1,4 +1,4 @@
-import { inject, Injectable } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
 import { Candidat } from '../models/candidat';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
@@ -14,6 +14,8 @@ export class GestionCandidatsService {
     new Candidat('3', 'lisa', 'simpson', 32, 'designer UI', 'lisa.png'),
     new Candidat('4', 'nidhal', 'jelassi', 40, 'formateur'),
   ];
+
+  private listeCandidatsSignal = signal(this.listeCandidats);
 
   getAllCandidats() {
     return this.listeCandidats;
