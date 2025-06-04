@@ -14,7 +14,7 @@
             width="150px"
             height="150px"
             class="rounded-circle align-content-center"
-            [src]="candidatCible.avatar | defaultAvatar"
+            [src]="candidatCible?.avatar | defaultAvatar"
             alt=""
           />
         </div>
@@ -27,22 +27,22 @@
             <table class="table table-hover table-striped">
               <tbody>
                 <tr>
-                  <td><strong>Prénom</strong> {{ candidatCible.prenom }}</td>
+                  <td><strong>Prénom</strong> {{ candidatCible?.prenom }}</td>
                 </tr>
                 <tr>
-                  <td><strong>Nom</strong> {{ candidatCible.nom }}</td>
+                  <td><strong>Nom</strong> {{ candidatCible?.nom }}</td>
                 </tr>
                 <tr>
-                  <td><strong>Age</strong>{{ candidatCible.age }} ans</td>
+                  <td><strong>Age</strong>{{ candidatCible?.age }} ans</td>
                 </tr>
 
                 <tr>
                   <td>
-                    <strong>Profession</strong> {{ candidatCible.profession }}
+                    <strong>Profession</strong> {{ candidatCible?.profession }}
                   </td>
                 </tr>
                 <tr>
-                  <td><strong>Image</strong> {{ candidatCible.avatar }}</td>
+                  <td><strong>Image</strong> {{ candidatCible?.avatar }}</td>
                 </tr>
               </tbody>
             </table>

@@ -16,7 +16,14 @@ export class AuthService {
     return this.http.post(`${this.link}/register`, identifiants);
   }
 
-  seDeconnecter() {}
+  seDeconnecter() {
+    localStorage.removeItem('access_token');
+  }
 
-  estConnecte() {}
+  estConnecte() {
+    let token = localStorage.getItem('access_token');
+    //return !!token;
+    if (token) return true;
+    return false;
+  }
 }

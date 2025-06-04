@@ -14,8 +14,10 @@ import { Router } from '@angular/router';
 export class AddComponent {
   private candSer = inject(GestionCandidatsService);
   private router = inject(Router);
+  estSoumis: boolean = false;
 
   ajouterHandler(e, fValue) {
+    this.estSoumis = true;
     console.log(e.target[4].files[0]);
     let formData = new FormData();
     formData.set('avatar', e.target[4].files[0]);
