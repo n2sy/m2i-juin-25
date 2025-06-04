@@ -20,8 +20,17 @@ export class InfosComponent {
 
   deleteHandler() {
     if (confirm('Etes-vous sûr de vouloir supprimer ce candidat ?')) {
-      this.candSer.deleteCandidat(this.candidatCible._id);
-      this.router.navigateByUrl('/cv');
+      this.candSer.deleteCandidatAPI(this.candidatCible._id).subscribe({
+        next: (response) => {
+          alert(response['message']);
+          this.router.navigateByUrl('/cv');
+        },
+        error: (err) => {
+          alert(
+            "Vous n'avez pas les autorisations nécessaires pour supprimer ce candidat"
+          );
+        },
+      });
     }
   }
 

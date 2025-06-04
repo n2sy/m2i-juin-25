@@ -36,10 +36,16 @@ export class GestionCandidatsService {
     let i = this.listeCandidats.findIndex((cand) => cand._id == uCandidat._id);
     this.listeCandidats[i] = uCandidat;
   }
+  updateCandidatAPI(uCandidat) {
+    return this.http.put(`${this.link}/free/${uCandidat._id}`, uCandidat);
+  }
 
   deleteCandidat(id) {
     let i = this.listeCandidats.findIndex((cand) => cand._id == id);
     this.listeCandidats.splice(i, 1);
+  }
+  deleteCandidatAPI(id) {
+    return this.http.delete(`${this.link}/free/${id}`);
   }
 
   chercherCandidatParId(selectedId) {

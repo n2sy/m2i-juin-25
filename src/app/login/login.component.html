@@ -1,3 +1,8 @@
+@if (showError) {
+<div class="alert alert-danger">Login et/ou Mot de passe invalide(s)</div>
+
+}
+
 <form #f="ngForm">
   <label for="">Login</label>
   <input
@@ -25,7 +30,29 @@
     class="form-control"
   />
 
-  <div #infosGroupe="ngModelGroup" ngModelGroup="infos">
+  <br />
+  <div class="row">
+    <div class="col-6 offset-4">
+      @if (loginShow) {
+      <button (click)="submitHandler(f)" class="btn btn-primary">
+        Se Connecter
+      </button>
+      <button (click)="toggleLoginShowBtn()" class="btn btn-warning">
+        Aller à Register
+      </button>
+
+      } @else {
+      <button (click)="submitHandler(f)" class="btn btn-dark">
+        S'inscrire
+      </button>
+      <button (click)="toggleLoginShowBtn()" class="btn btn-info">
+        Aller à Login
+      </button>
+      }
+    </div>
+  </div>
+
+  <!-- <div #infosGroupe="ngModelGroup" ngModelGroup="infos">
     <label for="">Langage préféré</label>
     <select name="langage" [ngModel]="defaultLanguage" class="form-control">
       <option value=""></option>
@@ -80,5 +107,5 @@
   </button>
   <pre>
     {{ f.value | json }}
-  </pre>
+  </pre> -->
 </form>

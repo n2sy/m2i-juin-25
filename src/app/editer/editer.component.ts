@@ -34,7 +34,16 @@ export class EditerComponent {
 
   ModifierHandler(fValue) {
     fValue._id = this.candidatAMettreAJour._id;
-    this.candSer.updateCandidat(fValue);
-    this.router.navigateByUrl('/cv');
+    this.candSer.updateCandidatAPI(fValue).subscribe({
+      next: (response) => {
+        alert(response['message']);
+        this.router.navigateByUrl('/cv');
+      },
+      error: (err) => {
+        alert(
+          "Vous n'avez pas les autorisations nécessaires pour supprimer ce candidat"
+        );
+      },
+    });
   }
 }
