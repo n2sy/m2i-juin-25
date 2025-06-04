@@ -28,6 +28,9 @@ export class GestionCandidatsService {
       this.listeCandidats[this.listeCandidats.length - 1]._id + 1;
     this.listeCandidats.push(newCandidat);
   }
+  addCandidatAPI(newCandidat) {
+    return this.http.post(`${this.link}/free`, newCandidat);
+  }
 
   updateCandidat(uCandidat) {
     let i = this.listeCandidats.findIndex((cand) => cand._id == uCandidat._id);
@@ -45,6 +48,10 @@ export class GestionCandidatsService {
 
   chercherCandidatParIdAPI(selectedId) {
     return this.http.get(`${this.link}/${selectedId}`);
+  }
+
+  uploadAvatar(f: FormData) {
+    return this.http.post('http://localhost:3000/images/upload', f);
   }
 
   ajouterCandidat() {

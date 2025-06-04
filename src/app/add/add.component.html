@@ -1,4 +1,4 @@
-<form #f="ngForm">
+<form #f="ngForm" (ngSubmit)="ajouterHandler($event, f.value)">
   <label for="">Prénom</label>
   <input ngModel required name="prenom" type="text" class="form-control" />
   <label for="">Nom</label>
@@ -8,17 +8,13 @@
   <label for="">Profession</label>
   <input ngModel name="profession" type="text" class="form-control" />
   <label for="">avatar</label>
-  <input ngModel name="avatar" type="text" class="form-control" />
+  <input type="file" class="form-control" />
 
   <pre>
     {{ f.value | json }}
   </pre>
   <br />
-  <button
-    (click)="ajouterHandler(f.value)"
-    [disabled]="f.invalid"
-    class="btn btn-outline-primary"
-  >
+  <button [disabled]="f.invalid" class="btn btn-outline-primary">
     Ajouter Candidat
   </button>
 </form>

@@ -15,8 +15,30 @@ export class AddComponent {
   private candSer = inject(GestionCandidatsService);
   private router = inject(Router);
 
-  ajouterHandler(fValue) {
-    this.candSer.addCandidat(fValue);
-    this.router.navigateByUrl('/cv');
+  ajouterHandler(e, fValue) {
+    console.log(e.target[4].files[0]);
+    let formData = new FormData();
+    formData.set('avatar', e.target[4].files[0]);
+
+    this.candSer.uploadAvatar(formData).subscribe({
+      next: (response) => {
+        fValue.avatar = response['fileName'];
+        this.candSer.addCandidatAPI(fValue).subscribe({
+          next: (response) => {
+            alert(response['message']);
+            this.router.navigateByUrl('/cv');
+          },
+          error: (err) => {
+            console.log("Problème avec l'ajout d'un candidat");
+          },
+        });
+      },
+      error: (err) => {
+        console.log("Problème avec l'upload de l'avatar");
+      },
+    });
+
+    // this.candSer.addCandidat(fValue);
+    //
   }
 }
