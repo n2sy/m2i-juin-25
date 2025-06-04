@@ -34,7 +34,14 @@ export class InfosComponent {
     this.actRoute.paramMap.subscribe({
       next: (p: ParamMap) => {
         //this.idRecupere = p.get('id');
-        this.candidatCible = this.candSer.chercherCandidatParId(p.get('id'));
+        this.candSer.chercherCandidatParIdAPI(p.get('id')).subscribe({
+          next: (response: Candidat) => {
+            this.candidatCible = response;
+          },
+          error: (err) => {
+            this.router.navigateByUrl('not-found');
+          },
+        });
       },
       // error : () => {
 

@@ -20,9 +20,16 @@ export class EditerComponent {
   private router = inject(Router);
 
   ngOnInit() {
-    this.candidatAMettreAJour = this.candSer.chercherCandidatParId(
-      this.activatedRoute.snapshot.paramMap.get('id')
-    );
+    this.candSer
+      .chercherCandidatParIdAPI(this.activatedRoute.snapshot.paramMap.get('id'))
+      .subscribe({
+        next: (response: Candidat) => {
+          this.candidatAMettreAJour = response;
+        },
+        error: (err) => {
+          this.router.navigateByUrl('not-found');
+        },
+      });
   }
 
   ModifierHandler(fValue) {

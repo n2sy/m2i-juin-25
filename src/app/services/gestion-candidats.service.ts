@@ -1,10 +1,13 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Candidat } from '../models/candidat';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
 export class GestionCandidatsService {
+  private http = inject(HttpClient);
+  link = 'http://localhost:3000/cv/candidats';
   private listeCandidats: Candidat[] = [
     new Candidat('1', 'bart', 'simpson', 23, 'ingénieur', 'bart.jpeg'),
     new Candidat('2', 'homer', 'simpson', 54, 'chef de projet', 'homer.png'),
@@ -14,6 +17,10 @@ export class GestionCandidatsService {
 
   getAllCandidats() {
     return this.listeCandidats;
+  }
+
+  getAllCandidatsAPI() {
+    return this.http.get(this.link);
   }
 
   addCandidat(newCandidat) {
@@ -36,7 +43,10 @@ export class GestionCandidatsService {
     return this.listeCandidats.find((cand) => cand._id == selectedId);
   }
 
-  constructor() {}
+  chercherCandidatParIdAPI(selectedId) {
+    return this.http.get(`${this.link}/${selectedId}`);
+  }
+
   ajouterCandidat() {
     this.listeCandidats.push(
       new Candidat('5', 'NEW', 'CANDIDAT', 40, 'formateur')
