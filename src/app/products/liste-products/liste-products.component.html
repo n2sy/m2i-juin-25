@@ -1,1 +1,37 @@
-<p>liste-products works!</p>
+<table class="table table-striped">
+  <thead>
+    <th>ID</th>
+    <th>Nom</th>
+    <th>Prix</th>
+    <th>Selection</th>
+  </thead>
+  <tbody>
+    @for (product of productsSer.allProducts(); track $index) {
+    <tr>
+      <td>{{ product.id }}</td>
+      <td>{{ product.nom }}</td>
+      <td>{{ product.prix | currency : "EUR" }}</td>
+      <td>
+        <button
+          (click)="productsSer.updateProduct(product.id)"
+          class="btn"
+          [ngClass]="{
+            'btn-danger': !product.estSelectionne,
+            'btn-success': product.estSelectionne
+          }"
+        >
+          {{ product.estSelectionne ? "est Seléctionné" : "Non Seléctionné" }}
+        </button>
+      </td>
+      <td>
+        <button
+          class="btn btn-outline-danger"
+          (click)="productsSer.deleteProduct(product.id)"
+        >
+          Delete
+        </button>
+      </td>
+    </tr>
+    }
+  </tbody>
+</table>

@@ -1,1 +1,39 @@
-<p>add-product works!</p>
+<table class="table table-striped">
+  <tbody>
+    <tr>
+      <td>
+        <input
+          #iName
+          type="text"
+          class="form-control"
+          placeholder="Nom du Produit"
+        />
+      </td>
+      <td>
+        <input
+          #iPrix
+          type="number"
+          class="form-control"
+          placeholder="Prix du Produit"
+        />
+      </td>
+      <td>
+        <input #iSel type="checkbox" />
+      </td>
+      <td>
+        <button
+          (click)="
+            productsSer.addProduct({
+              nom: iName.value,
+              prix: +iPrix.value,
+              estSelectionne: iSel.value
+            })
+          "
+          class="btn btn-success"
+        >
+          +
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

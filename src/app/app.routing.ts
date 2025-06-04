@@ -13,6 +13,7 @@ import { allowTokenGuard } from './guards/allow-token.guard';
 import { quitterLoginGuard } from './guards/quitter-login.guard';
 import { quitterFormGuard } from './guards/quitter-form.guard';
 import { blockLoginGuard } from './guards/block-login.guard';
+import { HomeProductsComponent } from './products/home-products/home-products.component';
 
 export let myRoutes: Routes = [
   { path: '', component: AccueilComponent },
@@ -47,6 +48,7 @@ export let myRoutes: Routes = [
     canDeactivate: [quitterLoginGuard],
   },
   { path: 'servers', component: ManageServersComponent },
+  { path: 'products', component: HomeProductsComponent },
   //   { path: 'servers', redirectTo: '/accounts', pathMatch: 'prefix' },
   { path: 'accounts', component: HomeAccountComponent },
   { path: 'not-found', component: NotFoundComponent },
